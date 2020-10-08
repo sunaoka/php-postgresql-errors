@@ -1,0 +1,18 @@
+{
+    "name": "sunaoka/php-postgresql-errors",
+    "description": "PostgreSQL Error Codes",
+    "keywords": ["PostgreSQL", "PHP"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sunaoka",
+            "email": "sunaoka@pocari.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Sunaoka\\PostgresError\\": "src/"
+        }
+    }
+}
