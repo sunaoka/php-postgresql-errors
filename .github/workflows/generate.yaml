@@ -1,0 +1,40 @@
+name: generate
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Generate
+        run: make
+
+      - name: Count changes
+        id: changes
+        run: |
+          git add -N .
+          echo "::set-output name=count::$(git diff --name-only | wc -l)"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update Error Code
+          delete-branch: true
+          title: Update Error Code
+          body: |
+            Error codes have been updated.
+
+            - https://github.com/postgres/postgres/blob/master/src/backend/utils/errcodes.txt
+        if: ${{ steps.changes.outputs.count > 0 }}
