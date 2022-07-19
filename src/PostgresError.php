@@ -131,6 +131,7 @@ class PostgresError
     const TOO_MANY_JSON_ARRAY_ELEMENTS = '2203D';
     const TOO_MANY_JSON_OBJECT_MEMBERS = '2203E';
     const SQL_JSON_SCALAR_REQUIRED = '2203F';
+    const SQL_JSON_ITEM_CANNOT_BE_CAST_TO_TARGET_TYPE = '2203G';
 
     // Class 23 - Integrity Constraint Violation
     const INTEGRITY_CONSTRAINT_VIOLATION = '23000';
