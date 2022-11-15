@@ -16,7 +16,7 @@ jobs:
           php-version: '8.0'
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Generate
         run: make
@@ -25,10 +25,11 @@ jobs:
         id: changes
         run: |
           git add -N .
-          echo "::set-output name=count::$(git diff --name-only | wc -l)"
+          git diff --name-only --exit-code
+        continue-on-error: true
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           commit-message: Update Error Code
           delete-branch: true
@@ -37,4 +38,4 @@ jobs:
             Error codes have been updated.
 
             - https://github.com/postgres/postgres/blob/master/src/backend/utils/errcodes.txt
-        if: ${{ steps.changes.outputs.count > 0 }}
+        if: steps.changes.outcome == 'failure'
