@@ -302,9 +302,6 @@ class PostgresError
     const UNDEFINED_FILE = '58P01';
     const DUPLICATE_FILE = '58P02';
 
-    // Class 72 - Snapshot Failure
-    const SNAPSHOT_TOO_OLD = '72000';
-
     // Class F0 - Configuration File Error
     const CONFIG_FILE_ERROR = 'F0000';
     const LOCK_FILE_EXISTS = 'F0001';
