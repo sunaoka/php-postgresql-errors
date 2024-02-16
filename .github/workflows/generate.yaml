@@ -16,7 +16,7 @@ jobs:
           php-version: '8.2'
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Generate
         run: make
@@ -29,7 +29,7 @@ jobs:
         continue-on-error: true
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v6
         with:
           commit-message: Update Error Code
           delete-branch: true
