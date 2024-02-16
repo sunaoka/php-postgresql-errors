@@ -158,6 +158,7 @@ class PostgresError
     const NO_ACTIVE_SQL_TRANSACTION = '25P01';
     const IN_FAILED_SQL_TRANSACTION = '25P02';
     const IDLE_IN_TRANSACTION_SESSION_TIMEOUT = '25P03';
+    const TRANSACTION_TIMEOUT = '25P04';
 
     // Class 26 - Invalid SQL Statement Name
     const INVALID_SQL_STATEMENT_NAME = '26000';
