@@ -302,6 +302,7 @@ class PostgresError
     const IO_ERROR = '58030';
     const UNDEFINED_FILE = '58P01';
     const DUPLICATE_FILE = '58P02';
+    const FILE_NAME_TOO_LONG = '58P03';
 
     // Class F0 - Configuration File Error
     const CONFIG_FILE_ERROR = 'F0000';
