@@ -57,6 +57,9 @@ class PostgresError
     const DIAGNOSTICS_EXCEPTION = '0Z000';
     const STACKED_DIAGNOSTICS_ACCESSED_WITHOUT_ACTIVE_HANDLER = '0Z002';
 
+    // Class 10 - XQuery Error
+    const INVALID_ARGUMENT_FOR_XQUERY = '10608';
+
     // Class 20 - Case Not Found
     const CASE_NOT_FOUND = '20000';
 
