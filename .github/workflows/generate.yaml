@@ -1,4 +1,4 @@
-name: generate
+name: Generate PostgreSQL Error Codes
 
 on:
   schedule:
@@ -13,20 +13,20 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.4'
 
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate
-        run: make
+      - name: Generate PostgreSQL Error Codes
+        uses: nick-fields/retry@v3
+        with:
+          timeout_seconds: 60
+          max_attempts: 3
+          command: make
 
-      - name: Count changes
-        id: changes
-        run: |
-          git add -N .
-          git diff --name-only --exit-code
-        continue-on-error: true
+      - name: Syntax check
+        run: php -l -n -d error_reporting=E_ALL ./src/PostgresError.php
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
@@ -38,4 +38,3 @@ jobs:
             Error codes have been updated.
 
             - https://github.com/postgres/postgres/blob/master/src/backend/utils/errcodes.txt
-        if: steps.changes.outcome == 'failure'
